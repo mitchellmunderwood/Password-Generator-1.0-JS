@@ -1,4 +1,4 @@
-# Title of Project
+# Password Generator
 
 ## Description
 
