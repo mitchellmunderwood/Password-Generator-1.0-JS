@@ -14,6 +14,6 @@
 
 ## Images
 
-> ![image](/Users/mitchellunderwood/Desktop/CodingBootcamp/Deployment/Password_Generator/readme/image.png)
+> ![image](./readme/image.png)
 >
 > 
