@@ -21,6 +21,30 @@ function generatePassword() {
       length: 0
     }
 
+     // variables and validation of user input to enforce parameters
+     let wordLength = 0;
+     let ans = "NaN";
+   
+     while (!parseInt(ans)) {
+       ans = parseInt(prompt("How many characters would you like you password to be?"));
+       if (!ans) {
+         alert("The password length must be a number");
+       }
+       while (ans < 8 || ans > 128) {
+         if (ans < 8) {
+           ans = 'NaN';
+           alert("Password length cannot be shorter than 8 characters.")
+         } else if (ans > 128) {
+           ans = 'NaN';
+           alert("Password length cannot exceed 128 characters")
+         }
+       }
+     }
+   
+     wordLength = Math.floor(ans);
+     config.length = wordLength;
+     console.log(config);
+
     // user prompts to get password configs and validation to ensure at least 1 type of character is selected
 
     let no_char = false;
@@ -35,31 +59,6 @@ function generatePassword() {
       alert("you have to select at least one type of character to generate a password")
     }
     }
-
-
-    // variables and validation of user input to enforce parameters
-    let wordLength = 0;
-    let ans = "NaN";
-  
-    while (!parseInt(ans)) {
-      ans = parseInt(prompt("How many characters would you like you password to be?"));
-      if (!ans) {
-        alert("The password length must be a number");
-      }
-      while (ans < 8 || ans > 128) {
-        if (ans < 8) {
-          ans = 'NaN';
-          alert("Password length cannot be shorter than 8 characters.")
-        } else if (ans > 128) {
-          ans = 'NaN';
-          alert("Password length cannot exceed 128 characters")
-        }
-      }
-    }
-  
-    wordLength = Math.floor(ans);
-    config.length = wordLength;
-    console.log(config);
 
     let myPassword = '';
 
