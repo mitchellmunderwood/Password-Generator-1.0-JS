@@ -9,7 +9,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
     // config object to store user responses and password configurations
@@ -21,11 +21,21 @@ function generatePassword() {
       length: 0
     }
 
-    // user prompts to get password configs
+    // user prompts to get password configs and validation to ensure at least 1 type of character is selected
+
+    let no_char = false;
+
+    while (!no_char) {
     config.uppercase = confirm("Do you want to include uppercase characters in your generated password?");
     config.lowercase = confirm("Do you want to include lowercase characters in your generated password?");
     config.numeric = confirm("Do you want to include numeric characters in your generated password?");
     config.special = confirm("Do you want to include special characters in your generated password?");
+    no_char = (config.uppercase || config.lowercase || config.numeric || config.special)
+    if (!no_char) {
+      alert("you have to select at least one type of character to generate a password")
+    }
+    }
+
 
     // variables and validation of user input to enforce parameters
     let wordLength = 0;
