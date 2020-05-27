@@ -51,4 +51,39 @@ function generatePassword() {
     config.length = wordLength;
     console.log(config);
 
+    let myPassword = '';
+
+    const upperCaseCharacters = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    const lowerCaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    const numericCharacters = [1,2,3,4,5,6,7,8,9,0];
+    const specialCharacters = ["!","@","#","$","%","^","&","*","|","?",".","~"];
+  
+    while (myPassword.length !== config.length) {
+      if (config.uppercase) {
+        let randomNum = Math.floor(Math.random() * (upperCaseCharacters.length));
+        myPassword = myPassword + upperCaseCharacters[randomNum]
+        if (myPassword.length === config.length) {break;}
+      }
+      if (config.lowercase) {
+        let randomNum = Math.floor(Math.random() * (lowerCaseCharacters.length));
+        myPassword = myPassword + lowerCaseCharacters[randomNum]
+        if (myPassword.length === config.length) {break;}
+      }
+      if (config.numeric) {
+        let randomNum = Math.floor(Math.random() * (numericCharacters.length));
+        myPassword = myPassword + numericCharacters[randomNum]
+        if (myPassword.length === config.length) {break;}
+      }
+      if (config.special) {
+        let randomNum = Math.floor(Math.random() * (specialCharacters.length));
+        myPassword = myPassword + specialCharacters[randomNum]
+        if (myPassword.length === config.length) {break;}
+      }
+  
+    }
+  
+    console.log('Password', myPassword);
+    console.log('Password Length', myPassword.length);
+    return(myPassword);
+
 }  
