@@ -60,7 +60,7 @@ function generatePassword() {
     }
     }
 
-    let myPassword = '';
+    let myPassword = [];
 
     // arrays for password characters
     const upperCaseCharacters = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -72,26 +72,40 @@ function generatePassword() {
     while (myPassword.length !== config.length) {
       if (config.uppercase) {
         let randomNum = Math.floor(Math.random() * (upperCaseCharacters.length));
-        myPassword = myPassword + upperCaseCharacters[randomNum]
+        myPassword.push(upperCaseCharacters[randomNum]);
         if (myPassword.length === config.length) {break;}
       }
       if (config.lowercase) {
         let randomNum = Math.floor(Math.random() * (lowerCaseCharacters.length));
-        myPassword = myPassword + lowerCaseCharacters[randomNum]
+        myPassword.push(lowerCaseCharacters[randomNum]);
         if (myPassword.length === config.length) {break;}
       }
       if (config.numeric) {
         let randomNum = Math.floor(Math.random() * (numericCharacters.length));
-        myPassword = myPassword + numericCharacters[randomNum]
+        myPassword.push(numericCharacters[randomNum]);
         if (myPassword.length === config.length) {break;}
       }
       if (config.special) {
         let randomNum = Math.floor(Math.random() * (specialCharacters.length));
-        myPassword = myPassword + specialCharacters[randomNum]
+        myPassword.push(specialCharacters[randomNum]);
         if (myPassword.length === config.length) {break;}
       }
   
     }
+
+    // randomize order of characters
+    
+    let shuffleNum = myPassword.length;
+    while (shuffleNum > 0) {
+      let randomIndex = Math.floor(Math.random() * shuffleNum);
+      shuffleNum = shuffleNum - 1;
+      let tempChar = myPassword[shuffleNum];
+      myPassword[shuffleNum] = myPassword[randomIndex];
+      myPassword[randomIndex] = tempChar;
+    }
+
+    myPassword = myPassword.join("");
+
   
     console.log('Password', myPassword);
     console.log('Password Length', myPassword.length);
