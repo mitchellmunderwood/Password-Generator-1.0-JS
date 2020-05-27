@@ -53,11 +53,13 @@ function generatePassword() {
 
     let myPassword = '';
 
+    // arrays for password characters
     const upperCaseCharacters = ["A", "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     const lowerCaseCharacters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
     const numericCharacters = [1,2,3,4,5,6,7,8,9,0];
     const specialCharacters = ["!","@","#","$","%","^","&","*","|","?",".","~"];
   
+    // loop to generate password of given length, based on config properties
     while (myPassword.length !== config.length) {
       if (config.uppercase) {
         let randomNum = Math.floor(Math.random() * (upperCaseCharacters.length));
@@ -84,6 +86,8 @@ function generatePassword() {
   
     console.log('Password', myPassword);
     console.log('Password Length', myPassword.length);
+
+    // password return for function
     return(myPassword);
 
 }  
